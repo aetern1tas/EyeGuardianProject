@@ -1,0 +1,5 @@
+flask
+flask_sqlalchemy
+opencv-python
+mediapipe==0.10.13
+numpy

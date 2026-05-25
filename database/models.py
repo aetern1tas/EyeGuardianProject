@@ -1,7 +1,13 @@
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
+import enum
 
 db = SQLAlchemy()
+
+class FatigueLevel(enum.Enum):
+    LOW = 'low'
+    HIGH = 'high'
+    UNKNOWN = 'unknown'
 
 class User(db.Model):
     __tablename__ = 'users'
@@ -26,6 +32,6 @@ class EyeRecord(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     session_id = db.Column(db.Integer, db.ForeignKey('sessions.id'), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
-    timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+    timestamp = db.Column(db.DateTime, default=datetime.utcnow, index=True)
     ear_score = db.Column(db.Float)
-    fatigue_level = db.Column(db.String(20))
+    fatigue_level = db.Column(db.Enum(FatigueLevel))
