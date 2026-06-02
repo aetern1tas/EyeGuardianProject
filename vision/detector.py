@@ -26,7 +26,7 @@ class FatigueDetector:
             output_face_blendshapes=False,
             output_facial_transformation_matrixes=False,
             num_faces=1,
-            min_face_detection_confidence=0.5   # исправленный параметр
+            min_face_detection_confidence=0.5   
         )
         self.landmarker = vision.FaceLandmarker.create_from_options(options)
         logger.info('FatigueDetector initialized (new API)')
