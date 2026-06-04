@@ -1,3 +1,7 @@
+Проблема в том, что на GitHub вложенные блоки кода (```) внутри других блоков кода отображаются некорректно. Нужно использовать **4 обратные кавычки** для внешних блоков, чтобы внутренние отображались правильно.
+
+Вот исправленный README:
+
 ```markdown
 # EyeGuardian
 
@@ -47,30 +51,23 @@
 
 ## Технологии
 
-```
-┌─────────────────────────────────┐
-│  Frontend / GUI                 │
-│  • OpenCV (cv2) — отображение   │
-│  • NumPy — обработка изображений│
-└─────────────────────────────────┘
-┌─────────────────────────────────┐
-│  Computer Vision                │
-│  • MediaPipe FaceLandmarker     │
-│  • Модель face_landmarker.task  │
-│  • Алгоритм EAR (Eye Aspect Ratio)│
-└─────────────────────────────────┘
-┌─────────────────────────────────┐
-│  Backend / Data                 │
-│  • Flask + SQLAlchemy — ORM     │
-│  • SQLite — локальная БД        │
-│  • Enum — типизация состояний   │
-└─────────────────────────────────┘
-┌─────────────────────────────────┐
-│  Utilities                      │
-│  • logging — система логов      │
-│  • datetime — работа со временем│
-└─────────────────────────────────┘
-```
+**Frontend / GUI**
+- OpenCV (cv2) — отображение
+- NumPy — обработка изображений
+
+**Computer Vision**
+- MediaPipe FaceLandmarker
+- Модель face_landmarker.task
+- Алгоритм EAR (Eye Aspect Ratio)
+
+**Backend / Data**
+- Flask + SQLAlchemy — ORM
+- SQLite — локальная БД
+- Enum — типизация состояний
+
+**Utilities**
+- logging — система логов
+- datetime — работа со временем
 
 ---
 
@@ -123,13 +120,15 @@ EyeGuardianProject/
 
 ## Установка
 
-### 1. Клонируйте репозиторий
+**1. Клонируйте репозиторий**
+
 ```bash
 git clone https://github.com/yourusername/eyeguardianproject.git
 cd eyeguardianproject
 ```
 
-### 2. Создайте виртуальное окружение
+**2. Создайте виртуальное окружение**
+
 ```bash
 python -m venv venv
 source venv/bin/activate  # macOS/Linux
@@ -137,7 +136,8 @@ source venv/bin/activate  # macOS/Linux
 venv\Scripts\activate     # Windows
 ```
 
-### 3. Установите зависимости
+**3. Установите зависимости**
+
 ```bash
 pip install -r requirements.txt
 ```
@@ -149,14 +149,16 @@ pip install -r requirements.txt
 - `mediapipe==0.10.13` — компьютерное зрение (FaceLandmarker)
 - `numpy` — математические операции
 
-### 4. Убедитесь, что модель MediaPipe присутствует
-Файл `face_landmarker.task` должен находиться в корне проекта (рядом с `app.py`). 
-Если его нет, скачайте с официального репозитория MediaPipe:
-```
-https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task
+**4. Убедитесь, что модель MediaPipe присутствует**
+
+Файл `face_landmarker.task` должен находиться в корне проекта (рядом с `app.py`). Если его нет, скачайте с официального репозитория MediaPipe:
+
+```bash
+wget https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task
 ```
 
-### 5. Запустите приложение
+**5. Запустите приложение**
+
 ```bash
 python app.py
 ```
@@ -340,18 +342,14 @@ RIGHT_EYE = [362, 385, 387, 263, 373, 380]
 ## Устранение неполадок
 
 ### Камера не открывается
-```bash
-# Проверьте доступ к камере в настройках ОС
-# Убедитесь, что камера не используется другим приложением
-# В логах появится: [ERROR] Camera not found
-```
+- Проверьте доступ к камере в настройках ОС
+- Убедитесь, что камера не используется другим приложением
+- В логах появится: `[ERROR] Camera not found`
 
 ### Модель не найдена
-```bash
-# Ошибка: FileNotFoundError: Модель не найдена по пути: ...
-# Убедитесь, что файл face_landmarker.task находится в корне проекта
-# Скачайте модель: https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task
-```
+- Ошибка: `FileNotFoundError: Модель не найдена по пути: ...`
+- Убедитесь, что файл `face_landmarker.task` находится в корне проекта
+- Скачайте модель: https://storage.googleapis.com/mediapipe-models/face_landmarker/face_landmarker/float16/1/face_landmarker.task
 
 ### Ошибка загрузки MediaPipe
 ```bash
@@ -369,12 +367,10 @@ python app.py
 ```
 
 ### Лицо не детектируется
-```bash
-# Проверьте освещение — оно должно быть достаточным
-# Убедитесь, что лицо находится в кадре
-# В логах: Face not detected
-# Можно понизить min_face_detection_confidence в detector.py (по умолчанию 0.5)
-```
+- Проверьте освещение — оно должно быть достаточным
+- Убедитесь, что лицо находится в кадре
+- В логах: `Face not detected`
+- Можно понизить `min_face_detection_confidence` в `detector.py` (по умолчанию 0.5)
 
 ### Приложение зависает при запуске
 ```bash
